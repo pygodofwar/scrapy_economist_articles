@@ -6,6 +6,10 @@
 
 ## 使用方法:
 
+> 最新期刊下载地址:
+
+>https://github.com/fredliu168/scrapy_economist_articles/releases
+
 > 运行环境: Python3 
 
 执行如下命令安装依赖：
