@@ -1,3 +1,6 @@
+
+# ScrapyEconomist [![star this repo](http://github-svg-buttons.herokuapp.com/star.svg?user=fredliu168&repo=scrapy_economist_articles&style=flat&background=1081C1)](https://github.com/fredliu168/scrapy_economist_articles) [![fork this repo](http://github-svg-buttons.herokuapp.com/fork.svg?user=fredliu168&repo=scrapy_economist_articles&style=flat&background=1081C1)](https://github.com/fredliu168/scrapy_economist_articles/fork) ![python](https://img.shields.io/badge/python-3.6-ff69b4.svg)
+
 # 自动抓取经济学人文章和期刊
 
 
