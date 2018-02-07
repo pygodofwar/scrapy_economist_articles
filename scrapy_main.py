@@ -29,7 +29,7 @@ def get_article_content(article_url,save_dir):
 
     r = requests.get(article_url, headers=headers)
 
-    print(r.status_code)
+    #print(r.status_code)
 
     #print(r.text)
 
@@ -131,7 +131,7 @@ def get_tpoics_articles(topics_url):
     mkdir(image_dir)
 
     r = requests.get(topics_url, headers=headers)
-    print(r.status_code)
+    #print(r.status_code)
 
     html_doc = r.text
 
@@ -160,7 +160,7 @@ def get_print_edition(edition_number):
 
     r = requests.get('https://www.economist.com/printedition/{}'.format(edition_number), headers=headers)
 
-    print(r.status_code)
+    #print(r.status_code)
 
     html_doc = r.text
 
