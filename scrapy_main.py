@@ -39,7 +39,7 @@ def get_article_content(article_url,save_dir):
 
     #print(soup.prettify())
 
-    # flytitle-and-title__flytitle 小标题 20180209
+    # flytitle-and-title__flytitle 小标题获取 20180209
     flytitle_and_title__flytitle = soup.find("span", class_="flytitle-and-title__flytitle")
 
     # flytitle-and-title__title 标题
@@ -53,7 +53,7 @@ def get_article_content(article_url,save_dir):
     f.write("# {}".format(flytitle_and_title_title.get_text()))
     f.write("\n\r")
 
-    print("开始下载文章{}".format(flytitle_and_title_title.get_text()))
+    print("开始下载文章:{}".format(flytitle_and_title_title.get_text()))
 
     #blog-post__rubric 子标题
     post_rubric = soup.find("p", class_="blog-post__rubric")
@@ -111,9 +111,14 @@ def get_article_content(article_url,save_dir):
     blog_post_text = soup.find("div", class_="blog-post__text")
 
 
-    for p in blog_post_text.find_all('p',class_=""):
-        f.write(p.get_text())
-        f.write("\n\r")
+    for p in blog_post_text.find_all('p'):
+
+        if p.get('class') == ['xhead']: # 20190209 添加内容中子标题
+            f.write("##### {}".format(p.get_text()))
+            f.write("\n\r")
+        elif p.get('class') == None:
+            f.write(p.get_text())
+            f.write("\n\r")
 
     #f.write("Power by Fredliu (http://blog.qzcool.com)")
     #f.write("\n\r")
@@ -226,7 +231,7 @@ def mkdir(path):
 
 if __name__ == '__main__':
 
-    artical_url ='https://www.economist.com/news/books-and-arts/21736506-joseph-cassara-vividly-brings-life-lost-manhattan-lives-and-loves-new-york'
+    artical_url ='https://www.economist.com/news/leaders/21736138-welcome-doctor-you-revolution-health-care-coming'
     get_article_content(artical_url,'/Users/fred/PycharmProjects/economist')
     #pass
 
