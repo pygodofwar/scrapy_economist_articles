@@ -39,13 +39,21 @@ def get_article_content(article_url,save_dir):
 
     #print(soup.prettify())
 
+    # flytitle-and-title__flytitle 小标题 20180209
+    flytitle_and_title__flytitle = soup.find("span", class_="flytitle-and-title__flytitle")
+
     # flytitle-and-title__title 标题
     flytitle_and_title_title = soup.find("span", class_="flytitle-and-title__title")
 
     f = open('{}/{}.md'.format(save_dir,flytitle_and_title_title.get_text()), 'w')
 
+    f.write("###### {}".format(flytitle_and_title__flytitle.get_text()))
+    f.write("\n\r")
+
     f.write("# {}".format(flytitle_and_title_title.get_text()))
     f.write("\n\r")
+
+    print("开始下载文章{}".format(flytitle_and_title_title.get_text()))
 
     #blog-post__rubric 子标题
     post_rubric = soup.find("p", class_="blog-post__rubric")
@@ -112,6 +120,7 @@ def get_article_content(article_url,save_dir):
 
     f.close()
 
+    print("文章下载完成")
 
 def get_tpoics_articles(topics_url):
     '''
@@ -217,12 +226,12 @@ def mkdir(path):
 
 if __name__ == '__main__':
 
-    #artical_url ='https://www.economist.com/news/science-and-technology/21736394-it-all-depends-which-palaeontologist-you-ask-strange-fossil-spider-or-maybe-not'
-    #get_article_content('https://www.economist.com/news/world-week/21736202-politics-week','/Users/fred/PycharmProjects/economist/2018-02-03')
+    artical_url ='https://www.economist.com/news/books-and-arts/21736506-joseph-cassara-vividly-brings-life-lost-manhattan-lives-and-loves-new-york'
+    get_article_content(artical_url,'/Users/fred/PycharmProjects/economist')
     #pass
 
     #get_print_edition('2018-02-03')
-    get_tpoics_articles('https://www.economist.com/latest-updates')
+    #get_tpoics_articles('https://www.economist.com/latest-updates')
 
 
 
