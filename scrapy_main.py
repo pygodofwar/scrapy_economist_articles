@@ -231,7 +231,7 @@ def mkdir(path):
 
 if __name__ == '__main__':
 
-    artical_url ='https://www.economist.com/news/leaders/21736138-welcome-doctor-you-revolution-health-care-coming'
+    artical_url ='https://www.economist.com/news/china/21737069-party-wants-people-rent-china-trying-new-ways-skimming-housing-market-froth'
     get_article_content(artical_url,'/Users/fred/PycharmProjects/economist')
     #pass
 
