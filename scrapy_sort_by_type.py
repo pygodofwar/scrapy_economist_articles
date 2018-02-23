@@ -57,7 +57,7 @@ def get_article_content(article_url, save_dir):
     # 保存的文件路径
     file_path = '{}/{}.md'.format(save_dir, flytitle_and_title_title.get_text())
 
-    file_name = '{}.md'.format(flytitle_and_title_title.get_text())
+    file_name = flytitle_and_title_title.get_text()
 
     f = open(file_path, 'w')
 
@@ -220,7 +220,7 @@ def get_print_edition(edition_number):
 
     #保存文章路径信息
     json_articale = {}
-    json_articale['cover_img'] = "cover.img"
+    json_articale['cover_img'] = "cover.jpg"
     json_articale['edition'] = edition_number
 
     json_articale['list'] = []

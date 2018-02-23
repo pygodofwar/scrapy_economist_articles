@@ -8,12 +8,16 @@
 
 > 2018.2.22 新增scrapy_sort_by_type.py 支持印刷版本按类型分类存储,并生成目录json信息,方便转化成电子书
 
+> 2018.2.23 新增epub_gen.py 支持把生成的markdown印刷版转成epub电子书格式
+
 听说程序员必须学好英语,如果ChinaDaily已经满足不了你,那快来试试经济学人,经济学人是学习英语的最好的帮手,但是去网站上看了下,各种文章需要订阅后才能看,于是稍微研究了下,有需要的同学的可以自己去抓取下.
 
 本代码使用Python3+BeautifulSoup自动下载经济学人期刊文章,保存成Markdown格式,可以使用MWeb等Markdown工具编辑、阅读或者转换成word,pdf格式
  
 
-## 使用方法:
+
+
+## 抓取期刊使用方法(scrapy_main.py):
 
 > 最新期刊下载地址:
 
@@ -64,6 +68,31 @@ get_article_content(article_url,save_dir)
 get_tpoics_articles('https://www.economist.com/latest-updates')
 
 ```
+
+
+## 抓取期刊并转成ebup电子书使用方法(scrapy_sort_by_type.py,epub_gen.py):
+
+### 一.先使用scrapy_sort_by_type下载电子期刊
+
+```python
+ get_print_edition('2018-02-17')
+```
+
+下载后按照类型进行分类,文章格式为markdown,同时生成economist.json,保存生成的文章信息
+
+![epub](images/economist_download.png)
+
+### 二.使用epub_gen生成电子书
+```python
+
+   makeEpub('2018-02-17')
+   
+```
+电子书刊如下展示:
+
+![epub](images/epub_book.png)
+
+![epub](images/epub_book_1.png)
 
 欢迎关注我的公众号,有问题可以留言:
 

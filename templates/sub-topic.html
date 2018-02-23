@@ -1,0 +1,30 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:py="http://genshi.edgewall.org/">
+<head>
+<title>${topic}</title>
+
+<link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body class="calibre">
+<div class="calibre_navbar">
+| <a href="${next_topic}.html">Next section</a> | <a href="topic.html">Main menu</a> |  <a py:if="Previous_section" href="${Previous_section}.html">Previous section|</a>   <hr class="calibre5"/>
+</div>
+<div class="calibre_rescale_">
+
+<h2 class="calibre_feed_title">${topic}</h2>
+
+<ul class="calibre_feed_list">
+
+<py:for each="article in articles">
+    <li   class="calibre_rescale_1"><a class="article" href="${article}.html">${article}</a></li>
+  </py:for>
+</ul>
+<div class="calibre_navbar"><hr class="calibre5"/>
+| <a href="${next_topic}.html">Next section</a> | <a href="topic.html">Main menu</a> |  <a py:if="Previous_section" href="${Previous_section}.html">Previous section|</a>
+</div>
+</div>
+</body>
+
+</html>

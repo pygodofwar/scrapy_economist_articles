@@ -1,0 +1,252 @@
+@page { margin-bottom: 5.0pt; margin-left: 5.0pt; margin-top: 5.0pt; margin-right: 5.0pt; }
+.article {
+    font-size: 1.2em;
+    font-weight: bold;
+    line-height: 1.2;
+    text-align: left
+    }
+.article_date {
+    color: gray;
+    font-family: monospace
+    }
+.blog-post {
+    display: block
+    }
+.blog-post-article-image {
+    height: 335px;
+    width: 595px
+    }
+.blog-post-article-image1 {
+    height: 606px;
+    width: 580px
+    }
+.blog-post-article-image2 {
+    height: 163px;
+    width: 290px
+    }
+.blog-post-article-image3 {
+    height: 634px;
+    width: 580px
+    }
+.blog-post-article-image4 {
+    height: 750px;
+    width: 1280px
+    }
+.blog-post-article-image5 {
+    height: 406px;
+    width: 1280px
+    }
+.blog-post-article-image6 {
+    height: 942px;
+    width: 1280px
+    }
+.blog-post-article-image7 {
+    height: 562px;
+    width: 580px
+    }
+.blog-post-article-image8 {
+    height: 830px;
+    width: 1280px
+    }
+.blog-post-article-image9 {
+    height: 670px;
+    width: 580px
+    }
+.blog-post-article-image10 {
+    height: 780px;
+    width: 580px
+    }
+.blog-post-article-image11 {
+    height: 742px;
+    width: 580px
+    }
+.blog-post-article-image12 {
+    height: 816px;
+    width: 580px
+    }
+.blog-post-article-image13 {
+    height: 598px;
+    width: 580px
+    }
+.blog-post-article-image14 {
+    height: 1097px;
+    width: 1280px
+    }
+.blog-post-article-image15 {
+    height: 672px;
+    width: 1280px
+    }
+.blog-post-article-image16 {
+    height: 678px;
+    width: 1280px
+    }
+.blog-post-article-image17 {
+    height: 710px;
+    width: 580px
+    }
+.blog-post-article-image18 {
+    height: 706px;
+    width: 580px
+    }
+.blog-post-article-image19 {
+    height: 616px;
+    width: 580px
+    }
+.blog-post-article-image20 {
+    height: 674px;
+    width: 580px
+    }
+.blog-post-article-image21 {
+    height: 625px;
+    width: 608px
+    }
+.blog-post-article-image22 {
+    height: 2389px;
+    width: 1280px
+    }
+.blog-post-article-image23 {
+    height: 852px;
+    width: 580px
+    }
+.blog-post-article-image24 {
+    height: 1270px;
+    width: 1280px
+    }
+.blog-post-article-image25 {
+    height: 2310px;
+    width: 580px
+    }
+.bold {
+    font-style: normal;
+    font-weight: bold
+    }
+.calibre {
+    display: block;
+    font-size: 1em;
+    padding-left: 0;
+    padding-right: 0;
+    margin: 0 5pt
+    }
+.calibre_feed_list {
+    display: block;
+    list-style-type: disc;
+    margin-bottom: 1em;
+    margin-right: 0;
+    margin-top: 1em
+    }
+.calibre_feed_title {
+    display: block;
+    font-size: 1.6em;
+    font-weight: bold;
+    line-height: 1.2;
+    margin: 0.83em 0
+    }
+.calibre_navbar {
+    display: block;
+    font-family: monospace;
+    font-size: 0.7em;
+    text-align: center
+    }
+.calibre_rescale_ {
+    display: block;
+    font-size: 1em
+    }
+.calibre_rescale_1 {
+    display: list-item;
+    font-size: 1em;
+    padding-bottom: 0.5em
+    }
+.calibre1 {
+    display: block;
+    text-align: center;
+    margin: 1em 0
+    }
+.calibre2 {
+    height: auto;
+    width: auto
+    }
+.calibre3 {
+    display: block;
+    text-align: right;
+    margin: 1em 0
+    }
+.calibre4 {
+    display: list-item
+    }
+.calibre5 {
+    color: gray;
+    display: block;
+    height: 2px;
+    margin: 0.5em auto;
+    border: currentColor inset 1px
+    }
+.calibre6 {
+    display: block;
+    margin: 1em 0
+    }
+.calibre7 {
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+    text-align: left;
+    margin: 1em 0
+    }
+.calibre8 {
+    font-weight: bold
+    }
+.feed {
+    font-size: 1.2em;
+    font-weight: bold;
+    line-height: 1.2
+    }
+.fly-title {
+    display: block;
+    font-size: 0.75em;
+    font-weight: bold;
+    margin: 0.83em 0
+    }
+.flytitle-and-title__body {
+    display: block;
+    font-size: 1em;
+    font-weight: bold;
+    margin: 0.67em 0
+    }
+.flytitle-and-title__flytitle {
+    color: red;
+    display: block;
+    font-size: 0.75em
+    }
+.footnotes {
+    font-size: 0.75em;
+    line-height: normal;
+    vertical-align: super
+    }
+.headline {
+    display: block;
+    font-size: 1.41667em;
+    font-weight: bold;
+    line-height: 1.2;
+    margin: 1em 0
+    }
+.italic {
+    font-style: italic
+    }
+.pullquote {
+    display: block;
+    float: right;
+    font-size: 1.125em;
+    font-style: italic;
+    font-weight: bold;
+    line-height: 1.2;
+    page-break-inside: avoid;
+    width: 228px;
+    padding: 7px 0 9px;
+    margin: 0 0 10px 15px;
+    border-top: black solid 3px;
+    border-bottom: black solid 3px
+    }
+.xhead {
+    display: block;
+    font-weight: bold;
+    margin: 1em 0
+    }

@@ -1,0 +1,25 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:py="http://genshi.edgewall.org/">
+<head>
+<title>The Economist</title>
+
+<link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body class="calibre">
+<div class="calibre_rescale_">
+
+<h1>The Economist</h1>
+
+<p class="calibre3">${deition}</p>
+
+<ul class="calibre_feed_list">
+
+  <py:for each="topic in topics">
+    <li id="feed_0" class="calibre4"><a class="feed" href="${topic}.html">${topic}</a></li>
+  </py:for>
+</ul>
+</div>
+</body>
+</html>

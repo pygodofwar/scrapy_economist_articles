@@ -1,0 +1,53 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:py="http://genshi.edgewall.org/">
+<!--!
+Copyright (c) 2012, Bin Tan
+This file is distributed under the BSD Licence. See python-epub-builder-license.txt for details.
+-->
+<head>
+    <title>${book.title}</title>
+    <!--
+  <style type="text/css">
+.title, .authors {
+  text-align: center;
+}
+span.author {
+  margin: 1em;
+}
+  </style>
+    -->
+    <style type="text/css" title="override_css">
+        @page {
+            padding: 0pt;
+            margin: 0pt
+        }
+
+        body {
+            text-align: center;
+            padding: 0pt;
+            margin: 0pt
+        }
+
+        div {
+            padding: 0pt;
+            margin: 0pt
+        }
+
+        img {
+            padding: 0pt;
+            margin: 0pt
+        }
+    </style>
+</head>
+<body>
+<!--
+  <h1 class="title">${book.title}</h1>
+  <h3 class="authors">
+  <py:for each="creator, _ in book.creators">
+  <span class="author">$creator</span>
+  </py:for>
+  </h3>
+  -->
+<img src="cover.jpg" alt="cover" style="height: 100%"/>
+</body>
+</html>
