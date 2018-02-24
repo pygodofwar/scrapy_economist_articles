@@ -103,7 +103,7 @@ def makeEpub(edition):
             #print(list_item['list__link'])
             #print(list_item['articale_image'])
 
-            # 拷贝文章图片,支持多图片
+            #拷贝文章图片,支持多图片
             if list_item['articale_image'] != []:
                 for image_item in list_item['articale_image']:
                     book.addImage(

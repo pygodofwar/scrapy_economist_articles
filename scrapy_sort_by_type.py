@@ -146,7 +146,7 @@ def get_article_content(article_url, save_dir):
         if children.name == 'figure':
             #下载文章内部图片
             image_inline = children.find('img')
-            image_value = image_inline.get('srcset').split(',')[-1]
+            image_value = image_inline.get('srcset').split(',')[2]
             image_inline_url = "{}{}".format("https://www.economist.com",
                                                     image_value.split(' ')[0].replace('\n', '').replace('\r', ''))
             #print(image_inline_url)
