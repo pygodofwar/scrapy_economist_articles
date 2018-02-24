@@ -103,11 +103,12 @@ def makeEpub(edition):
             #print(list_item['list__link'])
             #print(list_item['articale_image'])
 
-            # 拷贝图片
-            if list_item['articale_image'] != '':
-                book.addImage(
-                    "{}/{}/images/{}".format(article_dir, list_items['list__title'], list_item['articale_image']),
-                    "images/{}".format(list_item['articale_image']))
+            # 拷贝文章图片,支持多图片
+            if list_item['articale_image'] != []:
+                for image_item in list_item['articale_image']:
+                    book.addImage(
+                        "{}/{}/images/{}".format(article_dir, list_items['list__title'], image_item),
+                        "images/{}".format(image_item))
 
 
             title = list_item['list__link']
@@ -138,5 +139,5 @@ def makeEpub(edition):
 
 if __name__ == '__main__':
 
-    makeEpub('2018-02-24')
-
+    #makeEpub('2018-02-24')
+    makeEpub('2018-02-17')

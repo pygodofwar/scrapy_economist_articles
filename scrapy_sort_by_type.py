@@ -80,7 +80,7 @@ def get_article_content(article_url, save_dir):
     component_image_img = soup.find("img", class_="component-image__img blog-post__image-block")
     # 文件保存路径
     image_save_path = ''
-    image_name = ''
+    image_names = []
     if component_image_img != None:
         # print(component_image_img.get('src'))
         jpg_src = component_image_img.get('src')
@@ -88,12 +88,10 @@ def get_article_content(article_url, save_dir):
         url_path, img_name = os.path.split(jpg_src)
 
         # print(img_name)
-
         # print('{}/images/{}'.format(save_dir,img_name))
 
         image_save_path = '{}/images/{}'.format(save_dir, img_name)
-        image_name = img_name
-
+        image_names.append(img_name)
 
         with open(image_save_path, 'wb') as file:
             file.write(requests.get(jpg_src).content)
@@ -131,24 +129,60 @@ def get_article_content(article_url, save_dir):
     if inbox_newsletter!= None:
         inbox_newsletter.decompose()
 
-    #读取文章
-    for p in blog_post_text.find_all('p'):
+    #新增获取文章内部图片
+    for children in blog_post_text.children:
 
-        if p.get('class') == ['xhead']:  # 20190209 添加内容中子标题
-            f.write("##### {}".format(p.get_text()))
+        #print(children.name)
+        #print(children.attrs)
+        if children.name == 'p':
+
+            if children.get('class') == ['xhead']:  # 20190209 添加内容中子标题
+                f.write("##### {}".format(children.get_text()))
+                f.write("\n\r")
+            elif children.get('class') == None:
+                f.write(children.get_text())
+                f.write("\n\r")
+
+        if children.name == 'figure':
+            #下载文章内部图片
+            image_inline = children.find('img')
+            image_value = image_inline.get('srcset').split(',')[-1]
+            image_inline_url = "{}{}".format("https://www.economist.com",
+                                                    image_value.split(' ')[0].replace('\n', '').replace('\r', ''))
+            #print(image_inline_url)
+
+            url_path, img_name = os.path.split(image_inline_url)
+
+            image_save_path = '{}/images/{}'.format(save_dir, img_name)
+            image_names.append(img_name)
+
+            with open(image_save_path, 'wb') as file:
+                file.write(requests.get(image_inline_url).content)
+
+            f.write("![image](images/{})".format(img_name))
+
             f.write("\n\r")
-        elif p.get('class') == None:
-            f.write(p.get_text())
-            f.write("\n\r")
+
+    #读取文章
+    # for p in blog_post_text.find_all('p'):
+    #
+    #     if p.get('class') == ['xhead']:  # 20190209 添加内容中子标题
+    #         f.write("##### {}".format(p.get_text()))
+    #         f.write("\n\r")
+    #     elif p.get('class') == None:
+    #         f.write(p.get_text())
+    #         f.write("\n\r")
 
     # f.write("Power by Fredliu (http://blog.qzcool.com)")
     # f.write("\n\r")
 
     f.close()
 
-    return file_name, image_name
-
     print("文章下载完成")
+
+    return file_name, image_names
+
+
 
 
 def mkdir(path):
@@ -253,14 +287,14 @@ def get_print_edition(edition_number):
         for article_link in list__item.find_all("a", class_="link-button list__link"):
             print("正在下载文章{}".format(article_link.get('href')))
 
-            file_name, image_name = get_article_content('https://www.economist.com{}'.format(article_link.get('href')),
+            file_name, image_names = get_article_content('https://www.economist.com{}'.format(article_link.get('href')),
                                             article_dir_list_title)
             #print(file_path)
             #print(image_save_path)
             # html = markdownTohtml(file_path)
             # print(html)
 
-            list__link = {'list__link': file_name,"articale_image":image_name}
+            list__link = {'list__link': file_name,"articale_image":image_names}
             json_list__item['list__item'].append(list__link)
 
             #break
@@ -272,9 +306,10 @@ def get_print_edition(edition_number):
         file.write(json.dumps(json_articale).encode())
 
 if __name__ == '__main__':
-    get_print_edition('2018-02-24')
+    get_print_edition('2018-02-17')
 
-
+    #artical_url = 'https://www.economist.com/news/china/21737299-debate-about-how-revive-it-has-implications-whole-country-lessons-chinas-rust-belt'
+    #get_article_content(artical_url, '/Users/fred/PycharmProjects/economist')
     #
     # json_articale = {}
     # json_articale['cover_img'] = "cover.img"
