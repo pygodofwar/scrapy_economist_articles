@@ -138,5 +138,5 @@ def makeEpub(edition):
 
 if __name__ == '__main__':
 
-    makeEpub('2018-02-17')
+    makeEpub('2018-02-24')
 

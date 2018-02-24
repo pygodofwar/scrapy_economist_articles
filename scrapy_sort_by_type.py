@@ -266,7 +266,7 @@ def get_print_edition(edition_number):
         file.write(json.dumps(json_articale).encode())
 
 if __name__ == '__main__':
-    get_print_edition('2018-02-17')
+    get_print_edition('2018-02-24')
 
 
     #

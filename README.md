@@ -35,6 +35,12 @@
 pip install -r requirements.txt
 ``` 
 
+> 生成requirements.txt 
+```python
+pip freeze > requirements.txt
+```
+
+
 > 设置默认保存路径: SAVE_DIR = '/Users/fred/PycharmProjects/economist/'
 
 
