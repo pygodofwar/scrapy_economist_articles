@@ -110,6 +110,10 @@ def get_article_content(article_url,save_dir):
     #获取文章内容
     blog_post_text = soup.find("div", class_="blog-post__text")
 
+    # 清除订阅邮箱信息
+    inbox_newsletter = blog_post_text.find('div', class_='newsletter-form newsletter-form--inline')
+    if inbox_newsletter!= None:
+        inbox_newsletter.decompose()
 
     for p in blog_post_text.find_all('p'):
 
