@@ -7,10 +7,15 @@ import markdown
 import codecs
 from epub import *
 import json
+import hashlib
 
 SRC_DIR = '/Users/fred/PycharmProjects/economist/' #读取目录
 DEST_DIR = '/Users/fred/PycharmProjects/economist/' #保存的目标目录
 
+def MD5(in_string):
+    if in_string == None:
+        return None
+    return hashlib.md5(in_string.encode('utf-8')).hexdigest()
 
 def markdownTohtml(in_file):
     input_file = codecs.open(in_file, mode="r", encoding="utf-8")
@@ -79,7 +84,7 @@ def makeEpub(edition):
         articles = []
 
         for list_item in list_items['list__item']:
-            articles.append(list_item['list__link'])
+            articles.append((MD5(list_item['list__link']),list_item['list__link']))
 
         # 下一主题
         if index + 1 < len(json_articale['list']):
@@ -98,6 +103,7 @@ def makeEpub(edition):
                                                     next_topic=next_topic, articles=articles, topic=topic))
         book.addSpineItem(book_list_h1)
         book.addTocMapNode(book_list_h1.destPath, list_items['list__title'])
+
 
         for index_item,list_item in enumerate(list_items['list__item']):
             #print(list_item['list__link'])
@@ -118,14 +124,17 @@ def makeEpub(edition):
             next_item = None
 
             if index_item >0:
-                Previous = list_items['list__item'][index_item-1]['list__link']
+                Previous =  list_items['list__item'][index_item-1]['list__link']
 
             if index_item+1 < len(list_items['list__item']):
                 next_item = list_items['list__item'][index_item+1]['list__link']
 
-            node_articale = book.addHtml('', '{}.html'.format(list_item['list__link']),
-                                         loadHtmlTempler('article-content.html', Previous=Previous,
-                                                         next=next_item,Section_menu = topic, content=content,title = title, topic=topic))
+            #print(urllib.parse.quote_plus(list_item['list__link']))
+
+
+            node_articale = book.addHtml('', '{}.html'.format(MD5(list_item['list__link'])),
+                                         loadHtmlTempler('article-content.html', Previous=MD5(Previous),
+                                                         next=MD5(next_item),Section_menu = topic, content=content,title = title, topic=topic))
 
             book.addSpineItem(node_articale)
             book.addTocMapNode(node_articale.destPath, list_item['list__link'], 2)
@@ -139,5 +148,5 @@ def makeEpub(edition):
 
 if __name__ == '__main__':
 
-    #makeEpub('2018-02-24')
-    makeEpub('2018-02-17')
+    makeEpub('2018-02-24')
+    #makeEpub('2018-02-17')
