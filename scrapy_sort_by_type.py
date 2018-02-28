@@ -8,8 +8,10 @@ import codecs
 import json
 
 '''
-对出版杂志进行分类存储,并生成目录json,方便转换成电子书
-2018.2.22
+使用爬虫获取经济学人期刊文章,自动保存成markdown格式,可以使用MWeb等markdown工具编辑方便阅读或者转换成word,pdf格式,对出版杂志进行分类存储,并生成目录json,方便转换成电子书
+2018-02-22
+blog.qzcool.com
+by fredliu
 '''
 
 # 保存文件的路径
@@ -61,11 +63,11 @@ def get_article_content(article_url, save_dir):
 
     f = open(file_path, 'w')
 
-    f.write("###### {}".format(flytitle_and_title__flytitle.get_text()))
-    f.write("\n\r")
+    f.write("###### {}\n\r".format(flytitle_and_title__flytitle.get_text()))
 
-    f.write("# {}".format(flytitle_and_title_title.get_text()))
-    f.write("\n\r")
+
+    f.write("# {} \n\r".format(flytitle_and_title_title.get_text()))
+
 
     print("开始下载文章:{}".format(flytitle_and_title_title.get_text()))
 
@@ -73,8 +75,8 @@ def get_article_content(article_url, save_dir):
     post_rubric = soup.find("p", class_="blog-post__rubric")
 
     if post_rubric != None:
-        f.write("##### {}".format(post_rubric.get_text()))
-        f.write("\n\r")
+        f.write("##### {} \n\r".format(post_rubric.get_text()))
+
 
     # 获取图片
     component_image_img = soup.find("img", class_="component-image__img blog-post__image-block")
@@ -96,9 +98,8 @@ def get_article_content(article_url, save_dir):
         with open(image_save_path, 'wb') as file:
             file.write(requests.get(jpg_src).content)
 
-        f.write("![image](images/{})".format(img_name))
+        f.write("![image](images/{}) \n\r".format(img_name))
 
-        f.write("\n\r")
 
     # blog-post__section-link 文章分类
     blog_post__section_link = soup.find("a", class_="blog-post__section-link")
@@ -108,18 +109,18 @@ def get_article_content(article_url, save_dir):
 
     if blog_post__section_link != None and blog_post__datetime != None:
 
-        f.write("> {} | {}".format(blog_post__section_link.get_text().replace('print-edition icon ', ''),
+        f.write("> {} | {} \n\r".format(blog_post__section_link.get_text().replace('print-edition icon ', ''),
                                    blog_post__datetime.get_text()))
-        f.write("\n\r")
+
 
     elif blog_post__section_link != None:
 
-        f.write("> {}".format(blog_post__section_link.get_text().replace('print-edition icon ', '')))
-        f.write("\n\r")
+        f.write("> {} \n\r".format(blog_post__section_link.get_text().replace('print-edition icon ', '')))
+
 
     elif blog_post__datetime != None:
-        f.write("> {}".format(blog_post__datetime.get_text()))
-        f.write("\n\r")
+        f.write("> {} \n\r".format(blog_post__datetime.get_text()))
+
 
     # 获取文章内容
     blog_post_text = soup.find("div", class_="blog-post__text")
@@ -137,11 +138,11 @@ def get_article_content(article_url, save_dir):
         if children.name == 'p':
 
             if children.get('class') == ['xhead']:  # 20190209 添加内容中子标题
-                f.write("##### {}".format(children.get_text()))
-                f.write("\n\r")
+                f.write("##### {} \n\r".format(children.get_text()))
+
             elif children.get('class') == None:
-                f.write(children.get_text())
-                f.write("\n\r")
+                f.write("{} \n\r".format(children.get_text()))
+
 
         if children.name == 'figure':
             #下载文章内部图片
@@ -159,9 +160,7 @@ def get_article_content(article_url, save_dir):
             with open(image_save_path, 'wb') as file:
                 file.write(requests.get(image_inline_url).content)
 
-            f.write("![image](images/{})".format(img_name))
-
-            f.write("\n\r")
+            f.write("![image](images/{}) \n\r".format(img_name))
 
     #读取文章
     # for p in blog_post_text.find_all('p'):
@@ -306,10 +305,11 @@ def get_print_edition(edition_number):
         file.write(json.dumps(json_articale).encode())
 
 if __name__ == '__main__':
-    get_print_edition('2018-02-17')
+    #get_print_edition('2018-02-17')
 
-    #artical_url = 'https://www.economist.com/news/china/21737299-debate-about-how-revive-it-has-implications-whole-country-lessons-chinas-rust-belt'
-    #get_article_content(artical_url, '/Users/fred/PycharmProjects/economist')
+    artical_url = 'https://www.economist.com/news/china/21737447-countrys-politics-have-taken-another-turn-worse-chinas-leader-xi-jinping-will-be'
+    get_article_content(artical_url, '/Users/fred/PycharmProjects/economist')
+
     #
     # json_articale = {}
     # json_articale['cover_img'] = "cover.img"
